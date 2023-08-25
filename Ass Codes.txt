@@ -1,0 +1,448 @@
+Create Account
+
+  package Assignment;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class CreateAccount {
+
+	
+
+public static void main(String[] args) throws InterruptedException {
+	
+	//setup the path
+	ChromeDriver driver =new ChromeDriver();
+	//Load the url
+	driver.get("http://leaftaps.com/opentaps/control/login");
+	//maximize the window
+	driver.manage().window().maximize();
+	//findElement Enter username
+	driver.findElement(By.id("username")).sendKeys("demosalesmanager");
+	Thread.sleep(2000);
+	//findElement Enter password
+	driver.findElement(By.id("password")).sendKeys("crmsfa");
+	//findElement click login
+	driver.findElement(By.className("decorativeSubmit")).click();
+	//verify the page is open
+	//To get the title of the page
+      String title = driver.getTitle();     //assign local variable ctrl+2
+	System.out.println(title);
+	// Click on CRM/SFA
+     driver.findElement(By.linkText("CRM/SFA")).click();
+	//click on lead
+     driver.findElement(By.linkText("Leads")).click();
+     //click createLead
+     driver.findElement(By.partialLinkText("Create")).click();
+     // Enter Company name
+     driver.findElement(By.id("createLeadForm_companyName")).sendKeys("Testleaf");
+     // Enter FirstName
+     driver.findElement(By.id("createLeadForm_firstName")).sendKeys("Sowmiya");
+     //Enter Lasstname
+     driver.findElement(By.id("createLeadForm_lastName")).sendKeys("Thangavel");
+   //click on createaccount 
+     driver.findElement(By.xpath("//input[@value='CreateAccount']")).click();
+     //Click CreateLead Button
+     driver.findElement(By.name("submitButton")).click();
+    //verify my created or not
+     String text = driver.findElement(By.id("viewLead_firstName_sp")).getText();
+     System.out.println(text);
+
+     Thread.sleep(2000);
+     
+     // Step:1 Locate the dropdown web element
+        WebElement tools = driver.findElement(By.id("createLeadForm_dataSourceId"));
+        // Step:2 Instantiate Select class
+        Select drop1 = new Select(tools);
+        
+        drop1.selectByVisibleText("Employee");
+   //select industry 
+	     WebElement indus = driver.findElement(By.name("industryEnumId"));
+	     Select opts=new Select(indus);
+	     opts.selectByVisibleText("Computer Software");
+	     
+ //select ownership
+	     WebElement own = driver.findElement(By.name("ownershipEnumId"));
+	     Select owner=new Select(own);
+	     owner.selectByVisibleText("Corporation");
+ //select marketing campaign
+	     WebElement mark = driver.findElement(By.name("marketingCampaignId"));
+	     Select camp=new Select(mark);
+	     camp.selectByIndex(5);
+	     
+  //select state or province
+	     WebElement state = driver.findElement(By.name("generalStateProvinceGeoId"));
+	     Select prov=new Select(state);
+	     prov.selectByIndex(36);
+//select country
+	     WebElement country = driver.findElement(By.id("id=\"createLeadForm_generalCountryGeoId\""));
+	     Select coun=new Select(country);
+	     coun.selectByVisibleText("NJ");
+
+     Thread.sleep(1000);
+     
+     driver.close();
+     
+     
+}
+
+}
+
+
+
+Create Lead
+
+package Assignment;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class CreateLead {
+ public static void main(String[] args) throws InterruptedException {
+			
+			//setup the path
+			ChromeDriver driver =new ChromeDriver();
+			//Load the url
+			driver.get("http://leaftaps.com/opentaps/control/login");
+			//maximize the window
+			driver.manage().window().maximize();
+			//findElement Enter username
+			driver.findElement(By.id("username")).sendKeys("demosalesmanager");
+			Thread.sleep(2000);
+			//findElement Enter password
+			driver.findElement(By.id("password")).sendKeys("crmsfa");
+			//findElement click login
+			driver.findElement(By.className("decorativeSubmit")).click();
+			//verify the page is open
+			//To get the title of the page
+			Thread.sleep(2000);
+			String title = driver.getTitle();     //assign local variable ctrl+2
+			System.out.println(title);
+			// Click on CRM/SFA
+		     driver.findElement(By.linkText("CRM/SFA")).click();
+			//click on lead
+		     driver.findElement(By.linkText("Leads")).click();
+		     //click createLead
+		     driver.findElement(By.partialLinkText("Create")).click();
+		     // Enter Company name
+		     driver.findElement(By.id("createLeadForm_companyName")).sendKeys("Testleaf");
+		     // Enter FirstName
+		     driver.findElement(By.id("createLeadForm_firstName")).sendKeys("Sowmiya");
+		     //Enter Lasstname
+		     driver.findElement(By.id("createLeadForm_lastName")).sendKeys("Thangavel");
+		    // Step:1 Locate the dropdown web element
+		        WebElement tools = driver.findElement(By.id("createLeadForm_dataSourceId"));
+		        // Step:2 Instantiate Select class
+		        Select drop1 = new Select(tools);
+		        
+		        drop1.selectByVisibleText("Employee");
+		   //select industry 
+			     WebElement indus = driver.findElement(By.name("industryEnumId"));
+			     Select opts=new Select(indus);
+			     opts.selectByVisibleText("Computer Software");
+			     
+	     //select ownership
+			     WebElement own = driver.findElement(By.name("ownershipEnumId"));
+			     Select owner=new Select(own);
+			     owner.selectByVisibleText("Corporation");
+	     //select marketing campaign
+			     WebElement mark = driver.findElement(By.name("marketingCampaignId"));
+			     Select camp=new Select(mark);
+			     camp.selectByIndex(5);
+			     
+	      //select state or province
+			     WebElement state = driver.findElement(By.name("generalStateProvinceGeoId"));
+			     Select prov=new Select(state);
+			     prov.selectByIndex(36);
+		//select country
+			     WebElement country = driver.findElement(By.id("id=\"createLeadForm_generalCountryGeoId\""));
+			     Select coun=new Select(country);
+			     coun.selectByVisibleText("NJ");
+	  //click on createaccount 
+			     driver.findElement(By.xpath("//input[@value='Create Account']")).click();
+			     
+	  //Click CreateLead Button
+		     driver.findElement(By.name("submitButton")).click();
+		     //verify my created or not
+		     String text = driver.findElement(By.id("viewLead_firstName_sp")).getText();
+			 System.out.println(text);
+
+		     Thread.sleep(1000);
+		     
+		     driver.close();
+		     
+		     
+	}
+
+}
+
+
+Delete Lead
+
+package Assignment;
+
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DeleteLead {
+
+public static void main(String[] args) throws InterruptedException {
+	
+				ChromeDriver driver =new ChromeDriver();    
+		        driver.get("http://leaftaps.com/opentaps/control/login");       
+		        driver.manage().window().maximize();   
+		        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		        //enter the username
+		        driver.findElement(By.id("username")).sendKeys("demoSalesManager");
+		        //enter the password
+		        driver.findElement(By.id("password")).sendKeys("crmsfa");
+		        //click on loginbutton
+		        driver.findElement(By.className("decorativeSubmit")).click();
+		        //click on CRM/SFA
+			     driver.findElement(By.linkText("CRM/SFA")).click();
+	             //click on leads
+			     driver.findElement(By.linkText("Leads")).click();
+			    //click find leads link
+			     driver.findElement(By.linkText("Find Leads")).click();
+			    //click phone
+			     driver.findElement(By.xpath("//span[text()='Phone']")).click();
+			     
+                //Enter phone number
+			     driver.findElement(By.name("phoneCountryCode")).sendKeys("9");	  
+			     driver.findElement(By.name("phoneAreaCode")).sendKeys("1");
+			     driver.findElement(By.name("phoneNumber")).sendKeys("1234567890");
+			      //click find leads button
+			     driver.findElement(By.id("ext-gen915")).click();
+			     //click lead id
+			     driver.findElement(By.linkText("10056")).click();
+			     //click delete 
+			     driver.findElement(By.xpath("//a[text()='Delete']")).click();
+			     System.out.println("Title of the Window:" +driver.getTitle());
+			     Thread.sleep(1000);
+			     driver.close();
+}
+}
+
+			     
+			     
+			     
+			     
+			     
+			     
+Dropdown
+
+
+package Assignment;
+
+
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Dropdown {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		ChromeDriver driver =new ChromeDriver();    
+        driver.get("https://www.leafground.com/select.xhtml ");       
+        driver.manage().window().maximize();   
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        //Select UI Automation tool
+        WebElement uitool = driver.findElement(By.className("ui-selectonemenu"));
+        Select UI=new Select(uitool);
+        UI.selectByVisibleText("Selenium");
+        Thread.sleep(1000);
+        //Choose the course
+        driver.findElement(By.xpath("//button[@aria-label='Show Options']")).click();
+         driver.findElement(By.xpath("//li[text()='Appium']")).click();
+        //Choose country
+        driver.findElement(By.xpath("//label[text()='Select Country']")).click();
+        driver.findElement(By.xpath("//li[text()='India']")).click();
+        //Choose language
+        driver.findElement(By.xpath("//label[text()='Select Language']")).click();
+        driver.findElement(By.xpath("//li[text()='English']")).click();
+        //Confirm city
+        driver.findElement(By.xpath("//label[text()='Select City']")).click();
+        driver.findElement(By.xpath("//li[text()='Chennai']")).click();
+        //select 'Two'
+        driver.findElement(By.xpath("//label[text()='Select Values']")).click();
+        driver.findElement(By.xpath("//li[text()='Two']")).click();
+        String Title=driver.getTitle();
+        System.out.println("Title of the Window:" +Title);
+        
+        
+        Thread.sleep(3000);
+        driver.close();
+       
+        
+       
+        
+        
+
+	}
+
+}
+
+DulipicateLead
+
+package Assignment;
+
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class duplicateLead{
+
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		ChromeDriver driver =new ChromeDriver();    
+        driver.get("http://leaftaps.com/opentaps/control/login");       
+        driver.manage().window().maximize();   
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        
+          //enter the username
+        driver.findElement(By.id("username")).sendKeys("demoSalesManager");
+        //enter the password
+        driver.findElement(By.id("password")).sendKeys("crmsfa");
+        //click on loginbutton
+        driver.findElement(By.className("decorativeSubmit")).click();
+        //click on CRM/SFA
+	     driver.findElement(By.linkText("CRM/SFA")).click();
+	      //click on leads
+	     driver.findElement(By.linkText("Leads")).click();
+	      //click on create lead
+	     driver.findElement(By.linkText("Create Lead")).click();
+	     //enter company name
+	     driver.findElement(By.id("createLeadForm_companyName")).sendKeys("Test Leaf");
+	     //enter firstname
+	     driver.findElement(By.id("createLeadForm_firstName")).sendKeys("Sowmiya");
+	     //enter lastname
+	     driver.findElement(By.id("createLeadForm_lastName")).sendKeys("Thangavel");
+	     //enter firstname(local)
+	     driver.findElement(By.id("createLeadForm_firstNameLocal")).sendKeys("Sowmi");
+        //enter department field
+	     driver.findElement(By.id("createLeadForm_departmentName")).sendKeys("Non IT");
+	     //enter description field
+	     driver.findElement(By.name("description")).sendKeys("From July 2023 batch");
+	     //enter email
+	     driver.findElement(By.name("primaryEmail")).sendKeys("sowmiyadevi43@gmail.com");
+	      //click on create lead button
+	     driver.findElement(By.name("submitButton")).click();
+	       //get title of the window
+	     String title=driver.getTitle();
+	     System.out.println("Title of the Window:" +title);
+	     
+	     //click on duplicate button
+	     driver.findElement(By.linkText("Duplicate Lead")).click();
+	      //Enter new CompanyName
+	     driver.findElement(By.id("createLeadForm_companyName")).clear();
+	     driver.findElement(By.id("createLeadForm_companyName")).sendKeys("HCL");
+	     
+	     //Enter new FirstName
+	     driver.findElement(By.id("createLeadForm_firstName")).clear();
+	     driver.findElement(By.id("createLeadForm_firstName")).sendKeys("Sowmiya");
+	     
+	     Thread.sleep(3000);
+	     //click on create lead button
+	     driver.findElement(By.name("submitButton")).click();
+	     
+	     //get the title of the window
+	     String title1=driver.getTitle();
+	     System.out.println("Title of the Window: " +title1);
+	     
+	     Thread.sleep(3000);
+	     driver.close();
+	
+	}
+
+}
+
+Editlead
+
+
+
+package Assignment;
+
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class EditLead {
+
+public static void main(String[] args) throws InterruptedException {
+				
+				ChromeDriver driver =new ChromeDriver();    
+		        driver.get("http://leaftaps.com/opentaps/control/login");       
+		        driver.manage().window().maximize();   
+		        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		        //enter the username
+		        driver.findElement(By.id("username")).sendKeys("demoSalesManager");
+		        //enter the password
+		        driver.findElement(By.id("password")).sendKeys("crmsfa");
+		        //click on login
+		        driver.findElement(By.className("decorativeSubmit")).click();
+		        //click on CRM/SFA
+			     driver.findElement(By.linkText("CRM/SFA")).click();
+			    //click on leads
+			     driver.findElement(By.linkText("Leads")).click();
+			     Thread.sleep(1000);
+			     //click find leads
+			     driver.findElement(By.id("ext-gen334")).click();
+			     //click on first resulting lead
+			     driver.findElement(By.id("ext-gen1030")).click();
+			     Thread.sleep(1000);
+			     //get the title of window
+			     String title=driver.getTitle();
+			     System.out.println("Title of the window:"+title);
+			     //click on edit 
+			     driver.findElement(By.linkText("Edit")).click();
+			      //change the company name
+			     driver.findElement(By.id("updateLeadForm_companyName")).clear();
+			     driver.findElement(By.id("updateLeadForm_companyName")).sendKeys("TL");
+			     //click update button
+			     driver.findElement(By.xpath("//input[@value='Update']")).click();
+			     
+			     Thread.sleep(1000);
+			     driver.close();
+			     
+			     
+			}
+
+		}
+	
+
+
+
+Facebook
+
+
+package Assignment;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Facebook {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+			ChromeDriver driver =new ChromeDriver();
+				driver.get("https://www.facebook.com/login/");
+				driver.manage().window().maximize();
+				
+			}
+		}
+	
+
+
+
+			
+
