@@ -1,0 +1,55 @@
+package Week2day2;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class HandleDropdown {
+
+		public static void main(String[] args) throws InterruptedException {
+			
+			//setup the path
+			ChromeDriver driver =new ChromeDriver();
+			//Load the url
+			driver.get("http://leaftaps.com/opentaps/control/login");
+			//maximize the window
+			driver.manage().window().maximize();
+			//findElement Enter username
+			driver.findElement(By.id("username")).sendKeys("demosalesmanager");
+			Thread.sleep(2000);
+			//findElement Enter password
+			driver.findElement(By.id("password")).sendKeys("crmsfa");
+			//findElement click login
+			driver.findElement(By.className("decorativeSubmit")).click();
+			//verify the page is open
+			//To get the title of the page
+			Thread.sleep(2000);
+			String title = driver.getTitle();     //assign local variable ctrl+2
+			System.out.println(title);
+			// Click on CRM/SFA
+		     driver.findElement(By.linkText("CRM/SFA")).click();
+			//click on lead
+		     driver.findElement(By.linkText("Leads")).click();
+		     //click createLead
+		     driver.findElement(By.partialLinkText("Create")).click();
+		     // Enter Company name
+		     driver.findElement(By.id("createLeadForm_companyName")).sendKeys("Testleaf");
+		     // Enter FirstName
+		     driver.findElement(By.id("createLeadForm_firstName")).sendKeys("Sowmiya");
+		     //Enter Lasstname
+		     driver.findElement(By.id("createLeadForm_lastName")).sendKeys("Thangavel");
+		    // Step:1 Locate the dropdown web element
+		        WebElement tools = driver.findElement(By.id("createLeadForm_dataSourceId"));
+		        // Step:2 Instantiate Select class
+		        Select drop1 = new Select(tools);
+		        
+		        drop1.selectByVisibleText("Employee");
+		        //Click CreateLead Button
+		     driver.findElement(By.name("submitButton")).click();
+		     //verify my created or not
+		     String text = driver.findElement(By.id("viewLead_firstName_sp")).getText();
+			 System.out.println(text);
+	}
+
+}
